@@ -11,6 +11,20 @@ API Client Usage
 - set the base url using `set_base_url()`
 	- not specifying a url will default to the open api address
 
+```php
+require_once( PATH_TO_THIS_CLIENT . '/dst_api_client.php' );
+$Dst = new Dst_api_client();
+$Dst->set_base_url();
+try {
+	$address = '2820 Clark Ave. Saint Louis, MO 63103';
+	$response = json_decode( $Dst->street2coordinates( $address ), TRUE );
+	if( is_null( $response ) )
+		throw new Exception( 'Data Science Toolkit returned malformed JSON as a response.' );
+} catch ( Exception $e ) {
+	die( $e->getMessage() );
+}
+```
+
 ### Available Methods
 - `street2coordinates( $address )`
 - `google_style_geocoder( $address )`
