@@ -12,6 +12,7 @@
 		
 		private $base_url;
 		
+		// if no url is passed, then the public DST server will be used
 		public function set_base_url(
 			$base_url = 'http://www.datasciencetoolkit.org/'
 		) {
@@ -37,7 +38,7 @@
 			return $this->do_request( 'coordinates2politics/' . $lat . ',' . $lon );
 		}
 				
-		// make a curl request to the elasticsearch cluster
+		// make a curl request to the dst server specified by $this->set_base_url()
 		//
 		private function do_request(
 			$uri,						// the uri of the request ( leading slashes are removed )
