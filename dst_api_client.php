@@ -20,13 +20,13 @@
 		}
 		
 		public function street2coordinates(
-			$address // url encoded or not, doesn't matter
+			$address // string containing address
 		) {
 			return $this->do_request( 'street2coordinates/' . urlencode( $address ) );
 		}
 		
 		public function google_style_geocoder(
-			$address // url encoded or not, doesn't matter
+			$address // string containing address
 		) {
 			return $this->do_request( 'maps/api/geocode/json?sensor=false &address=' . urlencode( $address ) );
 		}
