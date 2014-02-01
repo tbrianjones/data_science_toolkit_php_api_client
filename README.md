@@ -44,3 +44,11 @@ Running Your Own DST Server
 - doesn't work from the web interface ( generally won't find the AMI ID )
 - prob want to check documentation for the most recent AMI ID
 - from the CLI: `ec2-run-instances ami-7b9df412 -t m1.small -z us-east-1b --aws-access-key <ACCESS-KEY> -W <SECRET-KEY> -k <KEY-FILE> -v`
+
+
+Important Notes
+---------------
+- PO BOX and STREET problems
+	- The DST doesn't deal well with addresses that contain PO Boxes.  It will often return the wrong information, or no information at all.  Therefore, this client removes PO BOXES from addresses you pass to the street2coordinates() endpoint.  This results in the DST generally returning good data.  This client then does it's own processing to extract the PO BOX and return it as the `street`.
+	- Sometimes the DST fails to extract the `street`.  It's not apparent why.  This client will attempt to extract it and clean it to propper standards on it's own.
+	- None of the changes this api client make will affect data coming out of the DST.  It only augments that data.
