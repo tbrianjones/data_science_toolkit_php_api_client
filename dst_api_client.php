@@ -42,6 +42,7 @@
 			$dst_address = preg_replace( '/((po|p\.o\.)\sbox\s[0-9]{1,8})/i', ' ', $address ); // remove po boxes
 			$dst_address = urlencode( $dst_address );
 			$response_json = $this->do_request( 'street2coordinates/' . $dst_address );
+			$response_json =utf8_encode( $response_json ); // removes weird characters that were breaking json_decode()
 			
 			// check for a street ( DST struggles with some streets and with po boxes )
       $response_array = json_decode( $response_json, TRUE );
