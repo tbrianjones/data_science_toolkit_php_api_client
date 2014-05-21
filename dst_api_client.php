@@ -64,7 +64,7 @@
 		public function google_style_geocoder(
 			$address // url encoded or not, doesn't matter
 		) {
-			return $this->do_request( 'maps/api/geocode/json?sensor=false &address=' . urlencode( str_replace( "\n", ' ', $address ) ) );
+			return $this->do_request( 'maps/api/geocode/json?sensor=false&address=' . urlencode( str_replace( "\n", ' ', $address ) ) );
 		}
 		
 		public function coordinates2politics(
